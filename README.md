@@ -72,16 +72,20 @@ The model showed promising identity consistency across sequences. However, divis
 
 The project generates:
 
+##
 Spatial cell trajectories
-Time–position trajectories
-Track-identity purity plots
-Predicted lineage graphs
+ <img width="1189" height="1190" alt="division cells trajectories" src="https://github.com/user-attachments/assets/9f69461a-09eb-493b-a83e-6f63435c854b" />
+ 
+## Time–position trajectories
+<img width="1690" height="989" alt="motion of cells_mamba" src="https://github.com/user-attachments/assets/459f504c-b477-4ec4-b603-3a306cd0180a" />
 
-C:\Users\Likithasri\Downloads\motion of cells_mamba.png
-C:\Users\Likithasri\Downloads\division cells trajectories.png
-C:\Users\Likithasri\Downloads\sequence 2 _lines.png
-C:\Users\Likithasri\Downloads\lines_histograms.png
-C:\Users\Likithasri\Downloads\videos_mamba_ctc_final_kaggle.ipynb
+## Track-identity purity plots
+<img width="1155" height="536" alt="lines_histograms" src="https://github.com/user-attachments/assets/7b29583d-70b1-4216-9aa0-c8690faf4f20" />
+
+Predicted lineage graphs
+<img width="1990" height="1390" alt="lineage_graph_mamba" src="https://github.com/user-attachments/assets/a679f9dd-807d-458c-8bac-359316bcb466" />
+
+
 
 Project Structure
 Temporal-Mamba-Cell-Tracking/
