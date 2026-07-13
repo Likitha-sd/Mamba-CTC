@@ -10,29 +10,36 @@ The framework reconstructs cell trajectories, learns temporal dynamics from trac
 
 ## Pipeline
 
-Microscopy Image Sequence
+
+DIC-C2DH-HeLa dataset
         ↓
-Ground Truth Segmentation Masks
+Load raw images, segmentation masks, and tracking annotations
         ↓
-Individual Cell Extraction (64 × 64)
+Extract individual cells from segmentation masks
         ↓
-CNN Feature Extraction
-        ↓
-128-D Feature Embeddings
-        ↓
-Hungarian Matching
-        ↓
-Cell Tracking
-        ↓
-Track Sequence Generation
+CNN appearance encoder
         ↓
 Temporal Mamba
         ↓
-64-D Temporal Embeddings
+Learn temporal cell representations
         ↓
-t-SNE Visualization
+Hungarian matching
         ↓
-Tracking Evaluation
+Assign predicted Track IDs
+        ↓
+Division-event head
+        ↓
+Construct predicted tracks and lineage
+        ↓
+Train on Sequence 01
+        ↓
+Freeze all learned weights
+        ↓
+Test on unseen Sequence 02
+        ↓
+Compare predictions with human annotations
+        ↓
+Export predictions in official CTC format
 
 ---
 
