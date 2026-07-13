@@ -72,8 +72,7 @@ The model showed promising identity consistency across sequences. However, divis
 
 The project generates:
 
-##
-Spatial cell trajectories
+## Spatial cell trajectories
  <img width="1189" height="1190" alt="division cells trajectories" src="https://github.com/user-attachments/assets/9f69461a-09eb-493b-a83e-6f63435c854b" />
  
 ## Time–position trajectories
@@ -82,12 +81,13 @@ Spatial cell trajectories
 ## Track-identity purity plots
 <img width="1155" height="536" alt="lines_histograms" src="https://github.com/user-attachments/assets/7b29583d-70b1-4216-9aa0-c8690faf4f20" />
 
-Predicted lineage graphs
+## Predicted lineage graphs
 <img width="1990" height="1390" alt="lineage_graph_mamba" src="https://github.com/user-attachments/assets/a679f9dd-807d-458c-8bac-359316bcb466" />
 
 
 
-Project Structure
+### Project Structure:
+
 Temporal-Mamba-Cell-Tracking/
 │
 ├── notebooks/
@@ -118,13 +118,16 @@ Current Status
  Official CTC TRA evaluation
  Improved division-aware tracking
  Additional CTC dataset evaluation
-Future Work
+
+### Future Work:
+
 Evaluate using the official CTC TRA metric
 Improve mitosis and parent–daughter modeling
 Add IDF1 and identity-switch evaluation
 Compare Temporal Mamba with CNN-only and motion-only baselines
 Extend the framework to additional 2D and 3D cell-tracking datasets
-Author
+
+## Author
 
 Likitha Sri Maddipatla
 
