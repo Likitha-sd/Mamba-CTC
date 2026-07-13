@@ -77,11 +77,11 @@ Time–position trajectories
 Track-identity purity plots
 Predicted lineage graphs
 
-"C:\Users\Likithasri\Downloads\motion of cells_mamba.png"
-"C:\Users\Likithasri\Downloads\division cells trajectories.png"
-"C:\Users\Likithasri\Downloads\sequence 2 _lines.png"
-"C:\Users\Likithasri\Downloads\lines_histograms.png"
-"C:\Users\Likithasri\Downloads\videos_mamba_ctc_final_kaggle.ipynb"
+C:\Users\Likithasri\Downloads\motion of cells_mamba.png
+C:\Users\Likithasri\Downloads\division cells trajectories.png
+C:\Users\Likithasri\Downloads\sequence 2 _lines.png
+C:\Users\Likithasri\Downloads\lines_histograms.png
+C:\Users\Likithasri\Downloads\videos_mamba_ctc_final_kaggle.ipynb
 
 Project Structure
 Temporal-Mamba-Cell-Tracking/
