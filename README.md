@@ -1,164 +1,88 @@
-# Temporal Mamba-Based Cell Tracking for Microscopy Images
+# Temporal Mamba for Cell Tracking and Lineage Analysis
 
-## Overview
+A CNN–Temporal Mamba framework for cell identity tracking, temporal feature modeling, division-event analysis, and lineage reconstruction on the **DIC-C2DH-HeLa** dataset from the Cell Tracking Challenge.
 
-This project presents a deep learning framework for cell tracking on microscopy image sequences from the Cell Tracking Challenge (CTC). The proposed pipeline combines CNN-based feature extraction, Hungarian-based cell association, and Temporal Mamba for temporal representation learning of reconstructed cell trajectories.
+The framework uses a convolutional neural network to encode individual cell appearance, a Temporal Mamba model to learn temporal cell representations, Hungarian matching for frame-to-frame association, and a division-event prediction head for lineage reconstruction.
 
-The framework reconstructs cell trajectories, learns temporal dynamics from tracked cells, and evaluates the tracking performance using standard tracking metrics.
-
----
-
-## Pipeline
-
-
-DIC-C2DH-HeLa dataset
-        ↓
-Load raw images, segmentation masks, and tracking annotations
-        ↓
-Extract individual cells from segmentation masks
-        ↓
-CNN appearance encoder
-        ↓
-Temporal Mamba
-        ↓
-Learn temporal cell representations
-        ↓
-Hungarian matching
-        ↓
-Assign predicted Track IDs
-        ↓
-Division-event head
-        ↓
-Construct predicted tracks and lineage
-        ↓
-Train on Sequence 01
-        ↓
-Freeze all learned weights
-        ↓
-Test on unseen Sequence 02
-        ↓
-Compare predictions with human annotations
-        ↓
-Export predictions in official CTC format
+The model was trained on **Sequence 01** and evaluated using frozen weights on the unseen **Sequence 02**, without retraining or using Sequence 02 ground-truth identities during tracking.
 
 ---
 
-## Features
+## Project Status
 
-- CNN-based cell appearance feature extraction
-- Hungarian Algorithm for optimal frame-to-frame cell association
-- Temporal Mamba for temporal feature learning
-- Cell trajectory reconstruction
-- t-SNE visualization of learned embeddings
-- Evaluation using tracking performance metrics
+| Component | Status |
+|---|---|
+| Dataset loading and inspection | Completed |
+| Cell detection extraction | Completed |
+| CNN appearance encoder | Completed |
+| Temporal Mamba implementation | Completed |
+| Sequence 01 training | Completed |
+| Hungarian cell association | Completed |
+| Division-event prediction head | Completed |
+| Frozen Sequence 02 inference | Completed |
+| Identity-purity evaluation | Completed |
+| Division and lineage evaluation | Completed |
+| Division-failure analysis | Completed |
+| CTC-format prediction export | Completed |
+| CTC export validation | Completed |
+| Official CTC TRA evaluation | Pending |
+
+---
+
+## Research Objective
+
+Cell tracking requires maintaining the identity of individual cells across microscopy frames while handling:
+
+- cell movement;
+- appearance variation;
+- shape changes;
+- temporary ambiguity;
+- track fragmentation;
+- cell division;
+- parent–daughter lineage relationships.
+
+Conventional frame-to-frame association methods may not fully use long-range temporal information. This project investigates whether **Mamba-based selective state-space modeling** can learn useful temporal representations for cell tracking.
+
+The main objectives are:
+
+1. Extract appearance features from individual cells using a CNN.
+2. Model temporal cell evolution using Temporal Mamba.
+3. Associate detections using appearance, motion, and shape information.
+4. Detect mitotic division events.
+5. Reconstruct parent–daughter lineage relationships.
+6. Evaluate frozen cross-sequence generalization.
 
 ---
 
 ## Dataset
 
-**Cell Tracking Challenge (CTC)**
+The experiments use the **DIC-C2DH-HeLa** dataset from the Cell Tracking Challenge.
 
-Dataset Used:
-- DIC-C2DH-HeLa
+The current implementation focuses on the two-dimensional HeLa cell sequences:
 
-Ground Truth Includes:
-- Segmentation Masks
-- Tracking Annotations
-- Cell Lineage Information
+```text
+DIC-C2DH-HeLa/
 
----
-
-## Technologies Used
-
-- Python
-- PyTorch
-- OpenCV
-- NumPy
-- SciPy
-- Scikit-learn
-- Matplotlib
-- Google Colab
-
----
-
-## Methodology
-
-1. Load microscopy image sequences and segmentation masks.
-2. Extract individual cells from segmentation masks.
-3. Resize each cell to 64 × 64 pixels.
-4. Extract 128-dimensional appearance features using a CNN.
-5. Associate cells across consecutive frames using Hungarian Matching.
-6. Construct complete cell trajectories.
-7. Convert trajectories into temporal feature sequences.
-8. Train Temporal Mamba using Mean Squared Error (MSE).
-9. Generate 64-dimensional temporal embeddings.
-10. Evaluate tracking performance.
-
----
-
-## Results
-
-| Metric | Value |
-|---------|--------|
-| Ground Truth Tracks | 38 |
-| Predicted Tracks | 36 |
-| Coverage | 36 / 38 |
-| Precision | 100% |
-| Recall | 98.57% |
-| F1-Score | 99.28% |
-| Approximate MOTA | 97.68% |
-| Continuous Tracks | 30 |
-| Fragmented Tracks | 6 |
-| ID Switches | 10 |
-
----
-
-## Temporal Mamba
-
-Temporal Mamba is used to model the temporal evolution of reconstructed cell trajectories.
-
-Input:
-- Sequence of 128-dimensional CNN feature embeddings
-
-Training:
-- Previous feature embeddings → Predict next feature embedding
-- Loss Function: Mean Squared Error (MSE)
-- Optimizer: Adam
-
-Output:
-- 64-dimensional temporal embedding for each tracked cell
-
----
-
-## Visualization
-
-- Cell trajectory reconstruction
-- t-SNE embedding visualization
-- Ground truth vs predicted tracking comparison
-- Tracking performance statistics
-
----
-
-## Future Work
-
-- Replace CNN with Vision Mamba for spatial feature extraction.
-- Integrate Temporal Mamba directly into the tracking stage.
-- Evaluate on official CTC benchmark datasets.
-- Compute official CTC metrics (TRA, SEG, DET).
-- Improve lineage reconstruction and cell division detection.
-
----
-
-## Author
-
-**Likitha Sri Maddipatla**
-
-B.Tech Computer Science and Engineering
-
-Sir C.R. Reddy College of Engineering
-
----
-
-## License
-
-This project is intended for academic and research purposes.
+├── 01/
+│   ├── t000.tif
+│   ├── t001.tif
+│   └── ...
+│
+├── 01_GT/
+│   └── TRA/
+│       ├── man_track000.tif
+│       ├── man_track001.tif
+│       ├── ...
+│       └── man_track.txt
+│
+├── 02/
+│   ├── t000.tif
+│   ├── t001.tif
+│   └── ...
+│
+└── 02_GT/
+    └── TRA/
+        ├── man_track000.tif
+        ├── man_track001.tif
+        ├── ...
+        └── man_track.txt
