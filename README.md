@@ -102,33 +102,43 @@ The frozen evaluation achieved **93.68% Mean Track Purity** and **86.99% Weighte
 
 The project generates the following outputs:
 
+### Raw image and Segemnetation cells:
+
+<img width="1244" height="590" alt="BASE CELL SEG" src="https://github.com/user-attachments/assets/a789fea8-ece2-4ae2-acfa-a3f6b7875e0f" />
+
+
+## CELL Temporal crops (resize):
+<img width="1732" height="593" alt="CELL CROPS TEMPRAL" src="https://github.com/user-attachments/assets/b78c98b2-c22e-41bf-9dfc-7bb67a04bacb" />
+
+
 ## Spatial Cell Trajectories
+
+<img width="1189" height="990" alt="SPATICAK MOTION TRAJECOTRIES" src="https://github.com/user-attachments/assets/fce6eaad-6fef-4bde-b64b-6bba4729be47" />
+
+
+## Division Aware graph: 
 
 <img width="1189" height="1190" alt="division cells trajectories" src="https://github.com/user-attachments/assets/a17bbcc7-e7da-4a7b-afe7-78ca964f63e2" />
 
 
 ---
 
-## Division Cell Trajectories
-
-
----
-
 ## Time–Position Trajectories
+<img width="1389" height="889" alt="TIME POSITION TRAJEVTORY" src="https://github.com/user-attachments/assets/3902b4c8-47f4-458c-ac89-3493b126012a" />
 
-<img width="1690" height="989" alt="motion of cells_mamba" src="https://github.com/user-attachments/assets/b63e3d98-af88-4f57-ad3a-a29fcf8ce96f" />
 
 ---
 
 ## Cell Motion Visualization
 
+<img width="1690" height="989" alt="motion of cells_mamba" src="https://github.com/user-attachments/assets/4683e9bc-8b2c-457d-b01d-801500e66cee" />
 
 
 ---
 
 ## Track Identity Purity
 
-<img width="1287" height="681" alt="sequence 2 _lines" src="https://github.com/user-attachments/assets/0d668b43-6056-4c14-b90d-5cbbd7bf8988" />
+<img width="1155" height="536" alt="lines_histograms" src="https://github.com/user-attachments/assets/e9682a41-0a60-481c-86a4-659b482e1ccb" />
 
 
 ---
