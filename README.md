@@ -1,136 +1,234 @@
-# Temporal Mamba for Cell Tracking
+# 🧬 Temporal Mamba for Cell Tracking Challenge
 
-A deep-learning framework that combines **CNN-based cell representation**, **Temporal Mamba**, and **Hungarian matching** to track cells across microscopy image sequences.
-
-The model was developed using the **DIC-C2DH-HeLa** dataset from the Cell Tracking Challenge. It was trained on Sequence 01 and evaluated using frozen weights on unseen Sequence 02.
+> Learning long-range temporal representations for microscopy cell tracking using **Temporal Mamba State Space Models**.
 
 ---
 
-## Overview
+## 📌 Overview
 
-Cell tracking requires maintaining the identity of individual cells across time while handling movement, appearance changes, and cell division.
+Cell tracking aims to preserve the identity of individual cells across time while handling:
 
-This project explores Temporal Mamba for learning long-range temporal relationships between cell observations.
+- Cell movement
+- Appearance variation
+- Occlusion
+- Cell division (mitosis)
 
-### Pipeline
+This project investigates **Temporal Mamba**, a State Space Model (SSM), for learning long-range temporal dependencies between cell observations. The framework combines deep appearance features with temporal sequence modeling to produce robust cell trajectories and lineage predictions on microscopy image sequences.
 
+---
 
+## 🚀 Key Features
+
+- CNN-based Cell Appearance Encoder
+- Temporal Mamba Sequence Modeling
+- Appearance + Motion + Shape Feature Fusion
+- Hungarian Matching for Cell Association
+- Division Event Prediction
+- Parent–Daughter Lineage Reconstruction
+- Frozen Cross-Sequence Evaluation
+- Cell Tracking Challenge (CTC) Result Export
+
+---
+
+# 🏗 Pipeline
+
+```text
 Cell Masks
-    ↓
-Cell Detection and Crop Extraction
-    ↓
+     │
+     ▼
+Cell Detection & Crop Extraction
+     │
+     ▼
 CNN Appearance Encoder
-    ↓
+     │
+     ▼
 Temporal Mamba
-    ↓
-Appearance + Motion + Shape Features
-    ↓
+     │
+     ▼
+Appearance + Motion + Shape Feature Fusion
+     │
+     ▼
 Hungarian Matching
-    ↓
+     │
+     ▼
 Predicted Cell Tracks
-    ↓
+     │
+     ▼
 Division Detection
+     │
+     ▼
+Parent–Daughter Lineage Reconstruction
+```
 
+---
 
-### Key Features
+# 📂 Dataset
 
-CNN-based cell appearance encoding
-Temporal modeling using Mamba
-Appearance-, motion-, and shape-aware association
-Hungarian matching for cell tracking
-Division-event prediction
-Parent–daughter lineage analysis
-Frozen cross-sequence evaluation
-CTC-format result export
-Dataset
+Experiments were conducted using the **Cell Tracking Challenge (CTC)** dataset.
 
-Experiments were conducted on the DIC-C2DH-HeLa dataset.
+**Dataset**
 
-Sequence	Usage
-Sequence 01	Model training
-Sequence 02	Frozen evaluation
+DIC-C2DH-HeLa
 
-Sequence 02 was evaluated without retraining or fine-tuning.
+| Sequence | Purpose |
+|-----------|----------|
+| Sequence 01 | Model Training |
+| Sequence 02 | Frozen Evaluation |
 
-### Results
+The model was evaluated on **Sequence 02** without retraining or fine-tuning to assess generalization across unseen sequences.
 
-The frozen model processed all 84 frames and 1,030 cell detections in Sequence 02.
+---
 
-Metric	Result
-Predicted tracks	34
-Ground-truth tracks	32
-Weighted identity purity	86.99%
-Mean track purity	93.68%
-Perfect-purity tracks	24 / 34
-Tracks with ≥90% purity	27 / 34
-Division F1	0.00%
-Lineage-edge F1	0.00%
+# 📊 Experimental Results
 
-The model showed promising identity consistency across sequences. However, division detection remains a limitation: the tracker frequently continued the parent identity into one daughter after mitosis instead of creating explicit parent–daughter relationships.
+| Metric | Result |
+|---------|--------|
+| Frames Processed | **84** |
+| Cell Detections | **1,030** |
+| Predicted Tracks | **34** |
+| Ground Truth Tracks | **32** |
+| Mean Track Purity | **93.68%** |
+| Weighted Identity Purity | **86.99%** |
+| Perfect Purity Tracks | **24 / 34** |
+| Tracks ≥90% Purity | **27 / 34** |
+| Division F1 | **0.00%** |
+| Lineage Edge F1 | **0.00%** |
 
-### Visualizations
+The frozen evaluation achieved **93.68% Mean Track Purity** and **86.99% Weighted Identity Purity**, demonstrating consistent identity preservation across unseen microscopy sequences. Division detection remains an open challenge, as the tracker frequently propagated the parent identity into one daughter cell instead of explicitly modeling mitosis.
 
-The project generates:
+---
 
-## Spatial cell trajectories
- <img width="1189" height="1190" alt="division cells trajectories" src="https://github.com/user-attachments/assets/9f69461a-09eb-493b-a83e-6f63435c854b" />
- 
-## Time–position trajectories
-<img width="1690" height="989" alt="motion of cells_mamba" src="https://github.com/user-attachments/assets/459f504c-b477-4ec4-b603-3a306cd0180a" />
+# 📈 Visualizations
 
-## Track-identity purity plots
-<img width="1155" height="536" alt="lines_histograms" src="https://github.com/user-attachments/assets/7b29583d-70b1-4216-9aa0-c8690faf4f20" />
+The project generates the following outputs:
 
-## Predicted lineage graphs
-<img width="1990" height="1390" alt="lineage_graph_mamba" src="https://github.com/user-attachments/assets/a679f9dd-807d-458c-8bac-359316bcb466" />
+## Spatial Cell Trajectories
 
+<p align="center">
+<img src="results/visualizations/spatial_tracks.png" width="800">
+</p>
 
+---
 
-### Project Structure:
+## Division Cell Trajectories
 
+<p align="center">
+<img src="results/visualizations/division_tracks.png" width="800">
+</p>
+
+---
+
+## Time–Position Trajectories
+
+<p align="center">
+<img src="results/visualizations/time_position.png" width="800">
+</p>
+
+---
+
+## Cell Motion Visualization
+
+<p align="center">
+<img src="results/visualizations/motion.png" width="800">
+</p>
+
+---
+
+## Track Identity Purity
+
+<p align="center">
+<img src="results/visualizations/purity_histogram.png" width="800">
+</p>
+
+---
+
+## Predicted Lineage Graph
+
+<p align="center">
+<img src="results/visualizations/lineage_graph.png" width="800">
+</p>
+
+---
+
+# 📂 Repository Structure
+
+```text
 Temporal-Mamba-Cell-Tracking/
 │
 ├── notebooks/
 │   └── temporal_mamba_cell_tracking.ipynb
 │
-├── results/
-│   ├── metrics/
-│   └── visualizations/
-│
 ├── checkpoints/
 │   ├── best_temporal_cell_mamba.pt
 │   └── best_division_event_head.pt
 │
+├── results/
+│   ├── metrics/
+│   └── visualizations/
+│
 ├── README.md
-└── requirements.txt
-Tech Stack
+├── requirements.txt
+└── LICENSE
+```
 
-Python · PyTorch · Mamba SSM · OpenCV · SciPy · NumPy · tifffile · Matplotlib · NetworkX
+---
 
-Current Status
- CNN cell encoder
- Temporal Mamba model
- Sequence 01 training
- Hungarian cell association
- Frozen Sequence 02 evaluation
- Division and lineage analysis
- CTC-format prediction export
- Official CTC TRA evaluation
- Improved division-aware tracking
- Additional CTC dataset evaluation
+# ⚙️ Technology Stack
 
-### Future Work:
+| Category | Technologies |
+|-----------|--------------|
+| Language | Python |
+| Deep Learning | PyTorch, Mamba SSM |
+| Computer Vision | OpenCV, tifffile |
+| Scientific Computing | NumPy, SciPy |
+| Visualization | Matplotlib |
+| Graph Analysis | NetworkX |
 
-Evaluate using the official CTC TRA metric
-Improve mitosis and parent–daughter modeling
-Add IDF1 and identity-switch evaluation
-Compare Temporal Mamba with CNN-only and motion-only baselines
-Extend the framework to additional 2D and 3D cell-tracking datasets
+---
 
-## Author
+# ✅ Current Status
 
-Likitha Sri Maddipatla
+- [x] CNN Appearance Encoder
+- [x] Temporal Mamba
+- [x] Hungarian Matching
+- [x] Frozen Cross-Sequence Evaluation
+- [x] Division Analysis
+- [x] Lineage Reconstruction
+- [x] CTC Result Export
+- [ ] Official CTC TRA Evaluation
+- [ ] IDF1 Evaluation
+- [ ] Additional CTC Dataset Benchmarking
 
-Summer Research Intern, Indian Institute of Space Science and Technology (IIST)
-    ↓
-Lineage Reconstruction
+---
+
+# 🔬 Future Work
+
+- Evaluate using the official Cell Tracking Challenge TRA metric
+- Improve mitosis and parent–daughter relationship modeling
+- Add IDF1 and identity-switch evaluation
+- Compare Temporal Mamba with CNN-only and motion-only baselines
+- Extend evaluation to additional 2D and 3D Cell Tracking Challenge datasets
+- Prepare the work for research publication
+
+---
+
+# 👩‍💻 Author
+
+**Likitha Sri Maddipatla**
+
+B.Tech Computer Science and Engineering
+
+Summer Research Fellow  
+Indian Institute of Space Science and Technology (IIST)
+
+GitHub: https://github.com/Likitha-sd
+
+---
+
+# ⭐ Support
+
+If you found this repository useful, consider giving it a ⭐.
+
+
+If you found this repository useful, consider giving it a ⭐.
+If you found this repository useful, consider giving it a ⭐.
