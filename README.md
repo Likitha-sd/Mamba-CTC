@@ -104,49 +104,39 @@ The project generates the following outputs:
 
 ## Spatial Cell Trajectories
 
-<p align="center">
-<img src="results/visualizations/spatial_tracks.png" width="800">
-</p>
+<img width="1189" height="1190" alt="division cells trajectories" src="https://github.com/user-attachments/assets/a17bbcc7-e7da-4a7b-afe7-78ca964f63e2" />
+
 
 ---
 
 ## Division Cell Trajectories
 
-<p align="center">
-<img src="results/visualizations/division_tracks.png" width="800">
-</p>
 
 ---
 
 ## Time–Position Trajectories
 
-<p align="center">
-<img src="results/visualizations/time_position.png" width="800">
-</p>
+<img width="1690" height="989" alt="motion of cells_mamba" src="https://github.com/user-attachments/assets/b63e3d98-af88-4f57-ad3a-a29fcf8ce96f" />
 
 ---
 
 ## Cell Motion Visualization
 
-<p align="center">
-<img src="results/visualizations/motion.png" width="800">
-</p>
+
 
 ---
 
 ## Track Identity Purity
 
-<p align="center">
-<img src="results/visualizations/purity_histogram.png" width="800">
-</p>
+<img width="1287" height="681" alt="sequence 2 _lines" src="https://github.com/user-attachments/assets/0d668b43-6056-4c14-b90d-5cbbd7bf8988" />
+
 
 ---
 
 ## Predicted Lineage Graph
 
-<p align="center">
-<img src="results/visualizations/lineage_graph.png" width="800">
-</p>
+<img width="1990" height="1390" alt="lineage_graph_mamba" src="https://github.com/user-attachments/assets/d28919c5-3bb8-4af0-8463-7945d43a03e9" />
+
 
 ---
 
